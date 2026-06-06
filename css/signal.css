@@ -224,6 +224,9 @@ pre {
   font-family: 'VT323', monospace;
 }
 
+#stats-left, #stats-right {
+}
+
 .nodisplay {
   display: none;
 }

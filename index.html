@@ -48,7 +48,7 @@
     <div class='circle'><div class="radar radar3"></div></div>
     <div class='circle'></div>
   </div>
-  <pre class="garbage garbage-left nodisplay">
+  <pre class="garbage garbage-left nodisplay" id="stats-left">
     uplink = yes
      axis. = 69
       inc. = 33.7 pos
@@ -56,7 +56,7 @@
 
     signal = 96.4 b
   </pre>
-  <pre class="garbage garbage-right nodisplay">
+  <pre class="garbage garbage-right nodisplay" id="stats-right">
     O:169
     M:247
     K:333
@@ -339,6 +339,21 @@
   }
   window.addEventListener('keydown', playAudio);
   onLoad();
+
+  setInterval(function() {
+    var left = document.getElementById('stats-left');
+    if (left && left.offsetParent !== null) {
+      var axis = Math.floor(Math.random() * 360);
+      var inc = (Math.random() * 90).toFixed(1);
+      var dec = (Math.random() * 90).toFixed(1);
+      var sig = (Math.random() * 100).toFixed(1);
+      left.textContent = '    uplink = yes\n     axis. = ' + axis + '\n      inc. = ' + inc + ' pos\n       dec = ' + dec + ' neg\n\n    signal = ' + sig + ' dB';
+    }
+    var right = document.getElementById('stats-right');
+    if (right && right.offsetParent !== null) {
+      right.textContent = '    O:' + Math.floor(Math.random() * 999) + '\n    M:' + Math.floor(Math.random() * 999) + '\n    K:' + Math.floor(Math.random() * 999) + '\n    A:' + Math.floor(Math.random() * 999) + '\n    R:' + Math.floor(Math.random() * 999);
+    }
+  }, 300);
 </script>
 <link rel="stylesheet" href="css/send.css">
 <link rel="stylesheet" href="css/receive.css">
